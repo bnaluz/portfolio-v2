@@ -1,95 +1,84 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Image from 'next/image';
+import styles from './page.module.css';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main>
+      {/* Projects anchor – you can replace with your carousel later */}
+      <section
+        id="projects"
+        style={{ padding: '48px 0' }}
+        className="container"
+      >
+        <h2>Projects</h2>
+        <p style={{ color: 'var(--color-muted-ink)' }}>
+          Selected work. Carousel coming soon.
+        </p>
+        {/* WorkGrid or Carousel here */}
+      </section>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* About */}
+      <section id="about" style={{ padding: '48px 0' }} className="container">
+        <h2>About Me</h2>
+        <p
+          style={{
+            maxWidth: 720,
+            lineHeight: 1.7,
+            color: 'var(--color-muted-ink)',
+          }}
+        >
+          I build fast, clean frontends with Next.js, React, and GSAP. I like
+          outdoorsy, earth-tone aesthetics and thoughtful motion.
+        </p>
+      </section>
+
+      {/* Tech */}
+      <section id="tech" style={{ padding: '48px 0' }}>
+        {/* If you built TechStack component, render it: */}
+        {/* <TechStack /> */}
+        {/* Otherwise, a quick placeholder grid: */}
+        <div className="container" style={{ display: 'grid', gap: 24 }}>
+          <h2>Technologies I Use</h2>
+          <div
+            style={{
+              display: 'grid',
+              gap: 24,
+              gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+              justifyItems: 'center',
+            }}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+            {['Next.js', 'React', 'TypeScript', 'SCSS', 'GSAP', 'Vercel'].map(
+              (t) => (
+                <div
+                  key={t}
+                  className="card"
+                  style={{ padding: 16, textAlign: 'center', width: '100%' }}
+                >
+                  <div style={{ fontSize: 32 }}>🧩</div>
+                  <div>{t}</div>
+                </div>
+              )
+            )}
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" style={{ padding: '48px 0' }} className="container">
+        <h2>Contact</h2>
+        <p>
+          Reach me on{' '}
+          <a href="https://linkedin.com/in/your-handle" target="_blank">
+            LinkedIn
+          </a>{' '}
+          or{' '}
+          <a href="https://github.com/your-handle" target="_blank">
+            GitHub
+          </a>
+          .
+        </p>
+        {/* Contact form will go here later */}
+      </section>
+    </main>
   );
 }

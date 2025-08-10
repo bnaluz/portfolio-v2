@@ -1,0 +1,16 @@
+@mixin focus-ring {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+@mixin card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+@mixin container {
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+}

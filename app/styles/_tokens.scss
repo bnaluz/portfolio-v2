@@ -1,0 +1,39 @@
+:root {
+  /* brand (light) */
+  --color-brand: #4f7b58; /* moss */
+  --color-brand-600: #41664a;
+  --color-accent: #d9902a; /* sunset amber */
+  --color-ink: #1e1f1c;
+  --color-muted-ink: #3d4038;
+
+  /* neutrals */
+  --color-bg: #f6f7f3; /* sage mist */
+  --color-surface: #ffffff;
+  --color-surface-2: #eef1ea; /* sage tint */
+  --color-border: #d8ddcf;
+  --color-sky: #e7efe9;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --ring: 0 0 0 3px color-mix(in oklab, var(--color-brand) 30%, transparent);
+
+  --dur-1: 0.18s;
+  --dur-2: 0.32s;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* dark theme */
+:root[data-theme='dark'] {
+  --color-bg: #0f1412;
+  --color-surface: #131a17;
+  --color-surface-2: #17211c;
+  --color-border: #233127;
+  --color-ink: #e9efe6;
+  --color-muted-ink: #b8c4bb;
+  --color-sky: #0e1713;
+
+  --color-brand: #6aa37b;
+  --color-brand-600: #4f7b58;
+  --color-accent: #e5a851;
+}

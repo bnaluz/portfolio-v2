@@ -1,0 +1,38 @@
+@import './tokens';
+@import './breakpoints';
+@import './mixins';
+@import './animations';
+
+:root {
+  --header-h: 56px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: ui-sans-serif, system-ui, 'Inter', 'SF Pro Text', Roboto,
+    'Segoe UI', Arial, sans-serif;
+}
+a {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-brand-600);
+}
+
+.container {
+  @include container;
+}
+.card {
+  @include card;
+}

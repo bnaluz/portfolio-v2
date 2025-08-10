@@ -1,0 +1,29 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+  transition: transform var(--dur-1) var(--ease);
+
+  &:hover {
+    background: var(--color-surface-2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.label {
+  font-size: 12px;
+}
