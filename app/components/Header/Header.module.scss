@@ -1,5 +1,7 @@
 .header {
   position: sticky;
+  display: flex;
+  align-items: center;
   top: 0;
   z-index: 50;
   background: var(--color-bg);
@@ -15,9 +17,11 @@
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 1.25rem;
-  color: var(--color-brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  cursor: pointer;
 }
 
 .links {
@@ -34,12 +38,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: none; /* no hard background color */
+  background: none;
   border: none;
   padding: 6px;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--color-ink); /* <- will flip with theme */
+  color: var(--color-ink);
   transition: color var(--dur-1) var(--ease);
 
   &:hover {
@@ -47,7 +51,6 @@
   }
 }
 
-/* Show links on desktop */
 @media (min-width: 768px) {
   .links {
     display: flex;

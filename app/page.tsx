@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import HeroAbout from './components/HeroAbout/HeroAbout';
 
 export default function Home() {
   return (
     <main>
+      <HeroAbout />
       {/* Projects anchor – you can replace with your carousel later */}
       <section
         id="projects"
@@ -15,21 +15,6 @@ export default function Home() {
           Selected work. Carousel coming soon.
         </p>
         {/* WorkGrid or Carousel here */}
-      </section>
-
-      {/* About */}
-      <section id="about" style={{ padding: '48px 0' }} className="container">
-        <h2>About Me</h2>
-        <p
-          style={{
-            maxWidth: 720,
-            lineHeight: 1.7,
-            color: 'var(--color-muted-ink)',
-          }}
-        >
-          I build fast, clean frontends with Next.js, React, and GSAP. I like
-          outdoorsy, earth-tone aesthetics and thoughtful motion.
-        </p>
       </section>
 
       {/* Tech */}

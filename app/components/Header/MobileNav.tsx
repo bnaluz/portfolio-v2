@@ -24,11 +24,11 @@ export default function MobileNav({
           ✕
         </button>
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <Link href="/#projects" onClick={onClose}>
-            Projects
-          </Link>
           <Link href="/#about" onClick={onClose}>
             About
+          </Link>
+          <Link href="/#projects" onClick={onClose}>
+            Projects
           </Link>
           <Link href="/#tech" onClick={onClose}>
             Tech

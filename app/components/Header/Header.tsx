@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from './Header.module.scss';
 import ThemeToggle from '../atoms/ThemeToggle/ThemeToggle';
 import MobileNav from './MobileNav';
+import Image from 'next/image';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={`container ${styles.nav}`}>
         <Link href="/" className={styles.logo}>
-          Bobby
+          <Image src="/logo.png" alt="Logo" width={100} height={75} />
         </Link>
 
         <div className={styles.links}>
@@ -29,7 +30,6 @@ export default function Header() {
             onClick={() => setMobileOpen(true)}
             aria-label="Open menu"
           >
-            {/* hamburger */}
             <svg
               width="24"
               height="24"

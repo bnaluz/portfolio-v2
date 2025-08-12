@@ -9,7 +9,6 @@
   transition: opacity var(--dur-1) var(--ease);
 }
 
-/* Dark mode */
 :root[data-theme='dark'] .overlay {
   background: color-mix(in srgb, var(--color-bg) 70%, black);
 }
@@ -33,7 +32,7 @@
   gap: 24px;
   transform: translateX(100%);
   transition: transform var(--dur-2) var(--ease);
-  z-index: 60; /* <- make sure panel is ABOVE overlay */
+  z-index: 60;
 }
 
 .panelOpen {
