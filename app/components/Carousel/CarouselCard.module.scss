@@ -1,0 +1,127 @@
+.carousel-card {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+  transition: box-shadow var(--dur-2) var(--ease),
+    border-color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
+
+  &:hover {
+    box-shadow: 0 10px 20px
+      color-mix(in oklab, var(--color-brand) 30%, transparent);
+    border-color: var(--color-brand);
+  }
+
+  &__image-container {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--color-sky);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
+      opacity: 0.8;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  &__content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      padding: 2.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: var(--color-muted-ink);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  &__technologies {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tech-tag {
+    background-color: var(--color-surface-2);
+    color: var(--color-muted-ink);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--color-border);
+    cursor: default;
+  }
+
+  &__view-more-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__view-more {
+    display: inline-block;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-accent);
+    text-decoration: none; // Remove the default underline
+    font-weight: 600;
+    margin-top: 1rem;
+    position: relative; // Position the pseudo-element relative to this
+    transition: color var(--dur-1) var(--ease);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; // Position the underline just below the text
+      left: 0;
+      width: 0; // Initially, the underline has no width
+      height: 2px; // Set the thickness of the underline
+      background-color: var(--color-brand); // The color of the underline
+      transition: width var(--dur-2) var(--ease); // Animate the width
+    }
+
+    &:hover {
+      color: var(--color-brand); // Change the text color on hover
+    }
+
+    &:hover::after {
+      width: 100%; // On hover, the underline grows to full width
+    }
+  }
+}

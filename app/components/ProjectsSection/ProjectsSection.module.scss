@@ -1,0 +1,41 @@
+.section-header {
+  padding-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.section-title {
+  color: var(--color-ink);
+}
+
+.section-link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none; // Remove the default underline
+  position: relative; // Position the pseudo-element relative to this
+  transition: color var(--dur-1) var(--ease);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; // Position the underline just below the text
+    left: 0;
+    width: 0; // Initially, the underline has no width
+    height: 2px; // Set the thickness of the underline
+    background-color: var(--color-brand); // The color of the underline
+    transition: width var(--dur-2) var(--ease); // Animate the width
+  }
+
+  &:hover {
+    color: var(--color-brand); // Change the text color on hover
+  }
+
+  &:hover::after {
+    width: 100%; // On hover, the underline grows to full width
+  }
+}

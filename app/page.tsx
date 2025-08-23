@@ -1,20 +1,15 @@
+import Carousel from './components/Carousel/Carousel';
 import HeroAbout from './components/HeroAbout/HeroAbout';
+import ProjectsSection from './components/ProjectsSection/ProjectsSection';
+import { projects } from './data/projects';
 
 export default function Home() {
   return (
     <main>
       <HeroAbout />
       {/* Projects anchor – you can replace with your carousel later */}
-      <section
-        id="projects"
-        style={{ padding: '48px 0' }}
-        className="container"
-      >
-        <h2>Projects</h2>
-        <p style={{ color: 'var(--color-muted-ink)' }}>
-          Selected work. Carousel coming soon.
-        </p>
-        {/* WorkGrid or Carousel here */}
+      <section id="projects">
+        <ProjectsSection projects={projects} />
       </section>
 
       {/* Tech */}
