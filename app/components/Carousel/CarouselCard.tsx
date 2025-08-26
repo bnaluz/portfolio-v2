@@ -23,18 +23,18 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ project }) => {
         <p className={styles['carousel-card__description']}>
           {project.description}
         </p>
-        <ul className={styles['carousel-card__technologies']}>
-          {project.technologies.map((tech) => (
-            <li key={tech} className={styles['carousel-card__tech-tag']}>
-              {tech}
-            </li>
-          ))}
-        </ul>
-        <div className={styles['carousel-card__view-more-wrapper']}>
-          <a href={project.link} className={styles['carousel-card__view-more']}>
-            View Project Details &rarr;
-          </a>
-        </div>
+        {project.technologies?.length > 0 && (
+          <ul className={styles['carousel-card__technologies']}>
+            {project.technologies.map((tech) => (
+              <li key={tech} className={styles['carousel-card__tech-tag']}>
+                {tech}
+              </li>
+            ))}
+          </ul>
+        )}
+        <a href={project.link} className={styles['carousel-card__view-more']}>
+          View Project Details &rarr;
+        </a>
       </div>
     </div>
   );

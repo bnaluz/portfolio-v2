@@ -19,12 +19,11 @@ export default function Header() {
         <div className={styles.links}>
           <Link href="/#about">About</Link>
           <Link href="/#projects">Projects</Link>
-          <Link href="/#tech">Tech</Link>
           <Link href="/#contact">Contact</Link>
         </div>
 
         <div className={styles.actions}>
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
           <button
             className={styles.menuButton}
             onClick={() => setMobileOpen(true)}

@@ -21,7 +21,10 @@
 .embla__slide {
   flex: 0 0 90%;
   min-width: 0;
-  padding: 0 1rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // Button Container

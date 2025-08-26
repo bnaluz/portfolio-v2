@@ -30,9 +30,6 @@ export default function MobileNav({
           <Link href="/#projects" onClick={onClose}>
             Projects
           </Link>
-          <Link href="/#tech" onClick={onClose}>
-            Tech
-          </Link>
           <Link href="/#contact" onClick={onClose}>
             Contact
           </Link>
