@@ -1,11 +1,12 @@
 'use client';
+
 import { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import gsap from 'gsap';
 import styles from './HeroAbout.module.scss';
 
-const motionOK =
+const motionOK = () =>
   typeof window !== 'undefined' &&
   !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -13,14 +14,53 @@ export default function HeroAbout() {
   const scope = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    if (!scope.current || !motionOK) return;
+    if (!scope.current || !motionOK()) return;
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.intro-reveal',
-        { y: 24, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out' }
-      );
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+      tl.fromTo(
+        `.${styles.kicker}`,
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4 }
+      )
+        .fromTo(
+          `.${styles.title}`,
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5 },
+          '-=0.1'
+        )
+        .fromTo(
+          `.${styles.subtitle}`,
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45 },
+          '-=0.2'
+        )
+        .fromTo(
+          `.${styles.lead}`,
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45 },
+          '-=0.25'
+        )
+        .fromTo(
+          `.${styles.actions}`,
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45 },
+          '-=0.25'
+        )
+        .fromTo(
+          `.${styles.photoWrap}`,
+          { scale: 0.96, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.5 },
+          '-=0.3'
+        )
+        .fromTo(
+          `.${styles.bio}`,
+          { y: 14, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45 },
+          '-=0.2'
+        );
     }, scope);
+
     return () => ctx.revert();
   }, []);
 
@@ -29,24 +69,20 @@ export default function HeroAbout() {
       <div className={`container ${styles.grid}`}>
         {/* Left: copy */}
         <div className={styles.copy}>
-          <p className={`intro-reveal ${styles.kicker}`}>
-            Let’s build something impactful together.
-          </p>
+          <p className={styles.kicker}>Let’s build something impactful</p>
 
-          <h1 className={`intro-reveal ${styles.title}`}>
+          <h1 className={styles.title}>
             Hi, I’m <span className={styles.highlight}>Bobby</span>
           </h1>
-          <h2 className={`intro-reveal ${styles.subtitle}`}>
-            A Full-Stack Developer
-          </h2>
+          <h2 className={styles.subtitle}>Full-Stack Developer</h2>
 
-          <p className={`intro-reveal ${styles.lead}`}>
-            I’m a developer with a passion for building responsive,
-            user-friendly web applications that make a real difference. I focus
-            on clean design, efficient code, and seamless user experiences.
+          <p className={styles.lead}>
+            I craft responsive, accessible web experiences with a focus on clean
+            design and performance. From internal tools to high-visibility
+            launches, I bridge design vision and development precision.
           </p>
 
-          <div className={`intro-reveal ${styles.actions}`}>
+          <div className={styles.actions}>
             <Link href="/#projects" className={styles.primary}>
               View Projects
             </Link>
@@ -56,7 +92,7 @@ export default function HeroAbout() {
           </div>
 
           {/* Socials */}
-          <div className={`intro-reveal ${styles.socials}`}>
+          <div className={styles.socials}>
             <a
               href="https://www.linkedin.com/in/bobby-naluz-664283197/"
               target="_blank"
@@ -111,7 +147,7 @@ export default function HeroAbout() {
 
         {/* Right: photo and copy */}
         <div className={styles.side}>
-          <div className={`intro-reveal ${styles.photoWrap}`}>
+          <div className={styles.photoWrap}>
             <Image
               src="/bobby-naluz-headshot.jpg"
               alt="Bobby portrait"
@@ -120,28 +156,29 @@ export default function HeroAbout() {
               style={{ objectFit: 'cover' }}
               priority
             />
+            <span className={styles.photoRing} aria-hidden="true" />
           </div>
 
-          <div className={`intro-reveal ${styles.bio}`}>
+          <div className={styles.bio}>
             <h3 className={styles.bioHeading}>Who I Am</h3>
             <p>
-              I started coding by automating metrics at Orangetheory with Excel
-              and VBA — realizing quickly that I loved building tools that made
-              work easier. That curiosity led me into full-stack development,
-              where I began shipping real-world solutions. At Arnouse Digital
-              Devices, I built internal tools that streamlined workflows. At
-              LegiLink, I shipped new features that improved the product
-              experience. I partnered twice with My New Red Shoes — first
-              creating a site for their "Thread the Change" fashion show, and
-              later developing <em>mboldenchange.org</em>
-              <span> as part of their rebrand.</span>
+              My journey into code began at Orangetheory, where I automated
+              metrics with Excel and VBA, discovering a passion for building
+              tools that make work easier. That curiosity led me into full stack
+              development, with a focus on elegant solutions and clean code.
             </p>
-
             <p>
-              Now at Instrument, I’ve contributed to projects like the
-              AlphaSense website, our own company site, and AWS — combining
-              design vision with development precision to deliver impactful,
-              accessible interfaces.
+              Since then, I've built internal tools at{' '}
+              <strong>Arnouse Digital Devices</strong>, shipped features at{' '}
+              <strong>LegiLink</strong>, and partnered with{' '}
+              <strong>My New Red Shoes</strong>, including the rebrand of their
+              website to <strong>mboldenchange.org</strong>.
+            </p>
+            <p>
+              Now at <strong>Instrument</strong>, I combine design vision with
+              development precision, contributing to major projects for clients
+              like <strong>AlphaSense</strong> and <strong>Amazon (AWS)</strong>
+              . I thrive on building things that have a tangible impact.
             </p>
           </div>
         </div>

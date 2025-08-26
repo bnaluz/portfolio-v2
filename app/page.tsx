@@ -1,4 +1,5 @@
 import Carousel from './components/Carousel/Carousel';
+import Contact from './components/Contact/Contact';
 import HeroAbout from './components/HeroAbout/HeroAbout';
 import ProjectsSection from './components/ProjectsSection/ProjectsSection';
 import { projects } from './data/projects';
@@ -13,20 +14,9 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" style={{ padding: '48px 0' }} className="container">
+      <section id="contact" className="container">
         <h2>Contact</h2>
-        <p>
-          Reach me on{' '}
-          <a href="https://linkedin.com/in/your-handle" target="_blank">
-            LinkedIn
-          </a>{' '}
-          or{' '}
-          <a href="https://github.com/your-handle" target="_blank">
-            GitHub
-          </a>
-          .
-        </p>
-        {/* Contact form will go here later */}
+        <Contact />
       </section>
     </main>
   );

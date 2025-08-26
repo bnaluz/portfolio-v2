@@ -1,0 +1,226 @@
+.contactSection {
+  padding-top: 30px;
+  padding-bottom: 80px;
+  background-color: var(--color-bg);
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem; // Increased space below heading
+  color: var(--color-ink);
+
+  @media (max-width: 600px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem; // Increased gap for more space between columns
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 2fr 3fr;
+    gap: 6rem; // Increased gap on larger screens
+  }
+}
+
+.contactInfo,
+.formContainer {
+  padding: 3rem; // Increased padding for a more spacious feel
+
+  @media (max-width: 600px) {
+    padding: 2rem;
+  }
+}
+
+/* =======================================
+// Left Side: Info & Socials
+======================================= */
+.profile {
+  margin-bottom: 3rem; // More space below the profile info
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.title {
+  font-size: 1.1rem;
+  color: var(--color-brand);
+}
+
+.availability {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--color-muted-ink);
+  line-height: 1.5;
+}
+
+.socials {
+  margin-top: 3rem; // More space between profile and socials
+}
+
+.socialsHeading {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--color-muted-ink);
+}
+
+.socialsList {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.iconBtn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: var(--color-surface-2);
+  transition: all var(--dur-1) var(--ease);
+  color: var(--color-muted-ink);
+
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: var(--color-brand);
+    color: var(--color-bg);
+  }
+}
+
+/* =======================================
+// Right Side: Form
+======================================= */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem; // Good default gap
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink);
+}
+
+.input,
+.textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  width: 100%;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all var(--dur-1) var(--ease);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: var(--ring);
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem; // Increased space above the button
+  background-color: var(--color-brand);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--dur-1) var(--ease);
+
+  &:hover {
+    background-color: var(--color-brand-600);
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.submissionMessage {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.success {
+  color: var(--color-brand);
+}
+
+.error {
+  color: #e53e3e;
+}
+
+/* =======================================
+// Back to Top Button
+======================================= */
+.backToTop {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    background-color: var(--color-surface-2);
+    box-shadow: var(--shadow);
+    color: var(--color-brand);
+    transition: all var(--dur-1) var(--ease);
+
+    &:hover {
+      transform: translateY(-4px);
+      background-color: var(--color-brand);
+      color: var(--color-bg);
+    }
+  }
+}
