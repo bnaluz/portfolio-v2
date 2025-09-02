@@ -34,7 +34,7 @@ export const projects: Project[] = [
       'Redesign of AlphaSense’s website with dynamic content and improved user experience.',
     longDescription:
       'While at Instrument, I worked on redesigning AlphaSense’s website, an AI-powered platform for market research and insights. I built the footer, card system, buttons, integrated Marketo forms, and set up dynamic resource pages. Using Next.js, React, and TypeScript, I focused on making components reusable, fast, and easy to maintain. The site runs on Vercel, and with Sanity, the marketing team can update content quickly. The project was all about building reliable, flexible front-end patterns and working closely with design and product teams.',
-    image: '/alphasense-logo.png',
+    image: '/Alphasense.webp',
     link: 'https://www.alpha-sense.com',
     slug: 'alphasense-website',
     technologies: ['Next.js', 'React', 'TypeScript', 'Vercel', 'Sanity'],
