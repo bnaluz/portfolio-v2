@@ -41,7 +41,7 @@ export default function HeroAbout() {
         // Typewriter animation
         timeline.to(chars, {
           opacity: 1,
-          duration: 0.05,
+          duration: 0.03,
           stagger: 0.02,
           onComplete: () => {
             // Add cursor after typing
