@@ -276,22 +276,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-
-      {/* Back to Top */}
-      <div className={styles.backToTop}>
-        <Link href="#hero" aria-label="Back to Top">
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM12 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16Z" />
-            <path d="M12 17V7m-4 4 4-4 4 4" />
-          </svg>
-        </Link>
-      </div>
     </section>
   );
 };

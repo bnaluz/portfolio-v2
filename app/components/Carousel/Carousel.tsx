@@ -16,7 +16,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     {
       loop: true,
     },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+    [Autoplay({ delay: 2500, stopOnInteraction: false })]
   );
 
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);

@@ -1,5 +1,5 @@
 .contactSection {
-  padding-top: 30px;
+  padding-top: 70px;
   padding-bottom: 80px;
   background-color: var(--color-bg);
 }
@@ -20,17 +20,17 @@
 .container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem; // Increased gap for more space between columns
+  gap: 3rem;
 
   @media (min-width: 1024px) {
     grid-template-columns: 2fr 3fr;
-    gap: 6rem; // Increased gap on larger screens
+    gap: 6rem;
   }
 }
 
 .contactInfo,
 .formContainer {
-  padding: 3rem; // Increased padding for a more spacious feel
+  padding: 3rem;
 
   @media (max-width: 600px) {
     padding: 2rem;
@@ -126,7 +126,9 @@
   text-transform: uppercase;
   font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
+
   color: var(--color-ink);
 }
 

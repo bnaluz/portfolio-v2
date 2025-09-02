@@ -3,6 +3,7 @@
 import React from 'react';
 import { Project } from '../../data/projects';
 import styles from './CarouselCard.module.scss';
+import Link from 'next/link';
 
 interface CarouselCardProps {
   project: Project;
@@ -32,9 +33,12 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ project }) => {
             ))}
           </ul>
         )}
-        <a href={project.link} className={styles['carousel-card__view-more']}>
+        <Link
+          href={`/projects/${project.slug}`}
+          className={styles['carousel-card__view-more']}
+        >
           View Project Details &rarr;
-        </a>
+        </Link>
       </div>
     </div>
   );

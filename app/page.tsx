@@ -15,7 +15,6 @@ export default function Home() {
 
       {/* Contact */}
       <section id="contact" className="container">
-        <h2>Contact</h2>
         <Contact />
       </section>
     </main>
