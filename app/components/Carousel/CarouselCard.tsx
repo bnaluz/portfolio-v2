@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { Project } from '../../data/projects';
 import styles from './CarouselCard.module.scss';
-import Link from 'next/link';
 
 interface CarouselCardProps {
   project: Project;
@@ -11,40 +12,40 @@ interface CarouselCardProps {
 
 const CarouselCard: React.FC<CarouselCardProps> = ({ project }) => {
   return (
-    <div className={styles['carousel-card']}>
-      <div className={styles['carousel-card__image-container']}>
-        <img
-          src={project.image}
-          alt={project.title}
-          className={styles['carousel-card__image']}
-        />
-        <div className={styles['carousel-card__overlay']} />
+    <Link href={`/projects/${project.slug}`} className={styles['card-link']}>
+      <div className={styles['card']}>
+        <div className={styles['card-top']}>
+          <div className={styles['card-logo-container']}>
+            <Image
+              src={project.image}
+              alt={`${project.title} logo`}
+              width={52}
+              height={52}
+              className={styles['card-logo']}
+            />
+          </div>
+          <h3 className={styles['card-title']}>{project.title}</h3>
+        </div>
+
+        <div className={styles['card-content']}>
+          <p className={styles['card-description']}>{project.description}</p>
+
+          {project.technologies?.length > 0 && (
+            <ul className={styles['card-technologies']}>
+              {project.technologies.map((tech) => (
+                <li key={tech} className={styles['card-tech-tag']}>
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <div className={styles['card-cta']}>
+            View Project <span>→</span>
+          </div>
+        </div>
       </div>
-
-      <div className={styles['carousel-card__content']}>
-        <h3 className={styles['carousel-card__title']}>{project.title}</h3>
-        <p className={styles['carousel-card__description']}>
-          {project.description}
-        </p>
-
-        {project.technologies?.length > 0 && (
-          <ul className={styles['carousel-card__technologies']}>
-            {project.technologies.map((tech) => (
-              <li key={tech} className={styles['carousel-card__tech-tag']}>
-                {tech}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <Link
-          href={`/projects/${project.slug}`}
-          className={styles['carousel-card__view-more']}
-        >
-          View Project Details &rarr;
-        </Link>
-      </div>
-    </div>
+    </Link>
   );
 };
 

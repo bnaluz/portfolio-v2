@@ -1,7 +1,9 @@
 .section {
   position: relative;
-  padding: clamp(32px, 3vw, 56px) 0;
-  background: radial-gradient(
+  padding-top: clamp(32px, 3vw, 56px);
+  padding-bottom: 0;
+  background:
+    radial-gradient(
       1200px 600px at 10% -10%,
       color-mix(in oklab, var(--color-brand) 22%, transparent) 0%,
       transparent 60%
@@ -87,8 +89,11 @@
   padding: 10px 14px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-    background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
 }
 
 .primary {
@@ -133,7 +138,9 @@
   color: var(--color-ink);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow);
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 .iconBtn:hover {
   background: var(--color-surface-2);
@@ -156,7 +163,8 @@
   overflow: hidden;
   background: var(--color-sky);
   border: 2px solid color-mix(in oklab, var(--color-brand) 65%, transparent);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12),
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12),
     0 0 0 10px color-mix(in oklab, var(--color-brand) 8%, transparent);
   justify-self: center;
   isolation: isolate;

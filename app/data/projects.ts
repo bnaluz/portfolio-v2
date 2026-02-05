@@ -1,7 +1,7 @@
 export type Project = {
   title: string;
   description: string;
-  longDescription?: string;
+  longDescription?: string[] | string;
   image: string;
   link: string;
   slug: string;
@@ -10,23 +10,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Amazon (AWS)',
+    title: 'Amazon Web Services (AWS)',
     description:
-      'Contributed to the frontend of the AWS website as a contractor through my company, Instrument.',
+      'Building the Aura Design System for AWS: engineering a scalable React component library and flexible patterns that power the global AWS web experience and high-traffic event takeovers.',
+    slug: 'aws-amazon',
     image: '/aws-logo.png',
     link: 'https://aws.amazon.com',
-    slug: 'aws-amazon',
     technologies: [
       'React',
       'TypeScript',
-      'SCSS/CSS',
+      'SCSS',
+      'Aura Design System',
       'Storybook',
       'Adobe Experience Manager (AEM)',
-      'Monorepo',
-      'Git',
+      'Adobe Analytics API',
+      'WCAG Accessibility',
     ],
-    longDescription:
-      'At Instrument, I worked with Amazon’s AWS CX-Eng team on their website, building and improving customer-facing components. Most of my work was in a big monorepo, creating reusable patterns that connected with Adobe Experience Manager for content. I focused on making components flexible and interactive, adding things like site-wide dark mode, full-width layouts, and hover animations, while making it easier for other teams to update content. I used Storybook to organize component development and worked closely with design and product teams to make sure everything looked good and worked well.',
+    longDescription: [
+      'Since joining the AWS CX-Eng team last summer, I’ve been focused on building out Aura, our new internal design system. My role is to engineer robust, accessible React components that serve as the building blocks for the entire AWS site. I focus on making these patterns highly flexible so they can be wrapped into AEM templates, giving content authors a high-quality UI to work with while maintaining brand consistency across thousands of pages.',
+      "A major test for the Aura system was the re:Invent Takeover Experience. I was responsible for the 'Daily Recap' section, which was a complex, grouped content area with a left-side menu and dynamic right-side content. I built specialized keynote speaker cards and article summary patterns that had to perform perfectly under massive global traffic. During the takeover, I also worked closely with Product Managers to refactor our analytics wrapper, ensuring that every click and hover was accurately captured by the Adobe Analytics API.",
+      'When I’m not building new components for Aura, I’m focused on the long-term health of the site. I recently collaborated with a third-party team on a site-wide accessibility audit, remediating patterns to meet WCAG standards. Right now, I’m also leading a technical spike to migrate our feedback systems from Aperture to Pulse. I’m mapping out the implementation to ensure 1:1 data parity, making sure the transition is seamless so that our user feedback loops stay reliable and high-quality.',
+    ],
   },
   {
     title: 'Alphasense',

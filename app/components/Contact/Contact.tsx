@@ -84,7 +84,7 @@ const Contact = () => {
         'service_hvqkiby',
         'template_rtoznup',
         form.current,
-        'Ma8e5J36TCwhSFiQ9'
+        'Ma8e5J36TCwhSFiQ9',
       );
       setSubmissionMessage('Message sent successfully!');
       e.target.reset();
@@ -99,7 +99,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className={styles.contactSection}>
-      <h2 className={styles.heading}>Get In Touch.</h2>
+      <h2 className={styles.heading}>Let's Get In Touch.</h2>
       <div className={styles.container}>
         {/* Left Side: Contact Info & Socials */}
         <div className={styles.contactInfo}>

@@ -1,8 +1,8 @@
 'use client';
-import React, { useCallback, useState, useEffect } from 'react';
+
+import React from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import type { EmblaCarouselType } from 'embla-carousel';
-import Autoplay from 'embla-carousel-autoplay';
+import AutoScroll from 'embla-carousel-auto-scroll'; // Import this
 import { Project } from '../../data/projects';
 import CarouselCard from '../Carousel/CarouselCard';
 import styles from './Carousel.module.scss';
@@ -12,79 +12,31 @@ type CarouselProps = {
 };
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
+  const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
+      align: 'start',
     },
-    [Autoplay({ delay: 2500, stopOnInteraction: false })]
+    [
+      AutoScroll({
+        speed: 1, // Higher number = faster
+        stopOnInteraction: false,
+        stopOnMouseEnter: true, // This handles your hover requirement
+      }),
+    ],
   );
 
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
-    setPrevBtnEnabled(emblaApi.canScrollPrev());
-    setNextBtnEnabled(emblaApi.canScrollNext());
-  }, []);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on('reInit', onSelect);
-    emblaApi.on('select', onSelect);
-  }, [emblaApi, onSelect]);
-
-  const onMouseOver = useCallback(() => {
-    const autoplay = emblaApi?.plugins().autoplay;
-    if (autoplay) {
-      autoplay.stop();
-    }
-  }, [emblaApi]);
-
-  const onMouseLeave = useCallback(() => {
-    const autoplay = emblaApi?.plugins().autoplay;
-    if (autoplay) {
-      autoplay.play();
-    }
-  }, [emblaApi]);
-
   return (
-    <div className={styles['carousel-full-width-wrapper']}>
-      <div
-        className={styles.embla}
-        ref={emblaRef}
-        onMouseOver={onMouseOver}
-        onMouseLeave={onMouseLeave}
-      >
-        <div className={styles.embla__container}>
-          {projects.map((project) => (
-            <div className={styles.embla__slide} key={project.slug}>
-              <CarouselCard project={project} />
-            </div>
-          ))}
-        </div>
-        <div className={styles.embla__buttons}>
-          <button
-            className={styles.embla__button}
-            onClick={scrollPrev}
-            disabled={!prevBtnEnabled}
-          >
-            &larr;
-          </button>
-          <button
-            className={styles.embla__button}
-            onClick={scrollNext}
-            disabled={!nextBtnEnabled}
-          >
-            &rarr;
-          </button>
+    <div className={styles['carousel-wrapper']}>
+      <div className={styles['embla']}>
+        <div className={styles['embla__viewport']} ref={emblaRef}>
+          <div className={styles['embla__container']}>
+            {projects.map((project) => (
+              <div className={styles['embla__slide']} key={project.slug}>
+                <CarouselCard project={project} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -70,7 +70,7 @@ export default function HeroAbout() {
           selector,
           { y: 18, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.4 },
-          '-=0.2'
+          '-=0.2',
         );
       });
     }, scope);
@@ -88,7 +88,7 @@ export default function HeroAbout() {
           <h1 className={styles.title}>
             Hi, I’m <span className={styles.highlight}>Bobby</span>
           </h1>
-          <h2 className={styles.subtitle}>Full-Stack Developer</h2>
+          <p className={styles.subtitle}>Full-Stack Developer</p>
 
           <p className={styles.lead}>
             I craft responsive, accessible web experiences with a focus on clean
@@ -177,7 +177,7 @@ export default function HeroAbout() {
           </div>
 
           <div className={styles.bio}>
-            <h3 className={styles.bioHeading}>Who I Am</h3>
+            <p className={styles.bioHeading}>Who I Am</p>
             <p>
               I got into tech by automating workflows with Excel and VBA, and
               quickly realized I enjoyed building tools that make work easier.
@@ -198,7 +198,7 @@ export default function HeroAbout() {
             <p>
               Outside of work, I enjoy tennis, basketball, reading, and video
               games. I drink a lot of coffee, love my cats, and like exploring
-              new ideas, whether in code or finding the best local coffee shop.
+              new ideas.
             </p>
           </div>
         </div>
