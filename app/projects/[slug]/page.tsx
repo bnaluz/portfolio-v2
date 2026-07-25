@@ -71,7 +71,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <p className={styles.roleText}>
                 {slug === 'mbolden-change-website'
                   ? 'Lead Engineer'
-                  : 'Frontend Engineer'}
+                  : 'Software Developer'}
               </p>
             </div>
 

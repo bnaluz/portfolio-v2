@@ -88,12 +88,13 @@ export default function HeroAbout() {
           <h1 className={styles.title}>
             Hi, I’m <span className={styles.highlight}>Bobby</span>
           </h1>
-          <p className={styles.subtitle}>Full-Stack Developer</p>
+          <p className={styles.subtitle}>Software Developer</p>
 
           <p className={styles.lead}>
-            I craft responsive, accessible web experiences with a focus on clean
-            design and performance. From internal tools to high-visibility
-            launches, I bridge design vision and development precision.
+            I build responsive, accessible web experiences that are clean for
+            users and easy for content teams to manage. I work on everything
+            from internal tools to high-visibility launches, connecting the
+            frontend, CMS, and content model so sites stay easy to build on.
           </p>
 
           <div className={styles.actions}>
@@ -191,9 +192,10 @@ export default function HeroAbout() {
               <strong>LegiLink</strong>, and led the rebrand of{' '}
               <strong>My New Red Shoes</strong>’ website to{' '}
               <strong>mboldenchange.org</strong>. Now at{' '}
-              <strong>Instrument</strong>, I work on projects for clients like{' '}
+              <strong>Instrument</strong>, I build for clients like{' '}
               <strong>AlphaSense</strong> and <strong>Amazon (AWS)</strong>,
-              making sure the sites are functional, easy to use, and look great.
+              focusing on reusable React components, accessibility, analytics,
+              and design-system work that holds up at scale.
             </p>
             <p>
               Outside of work, I enjoy tennis, basketball, reading, and video
