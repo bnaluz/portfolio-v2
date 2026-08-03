@@ -1,6 +1,9 @@
 .carousel-wrapper {
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .embla {
@@ -25,6 +28,107 @@
   display: flex;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: min(1100px, 100% - 2rem);
+  margin-inline: auto;
+}
+
+.nav-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    background var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease),
+    color var(--dur-1) var(--ease),
+    transform var(--dur-1) var(--ease);
+
+  &:hover {
+    background: var(--color-surface-2);
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow), var(--ring);
+  }
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.dot {
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-muted-ink);
+  border-radius: 999px;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background var(--dur-1) var(--ease),
+    border-color var(--dur-1) var(--ease),
+    color var(--dur-1) var(--ease),
+    transform var(--dur-1) var(--ease);
+
+  &:hover {
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+    background: var(--color-surface-2);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--ring);
+  }
+
+  &--active {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
+
+    &:hover {
+      background: var(--color-brand-600);
+      border-color: var(--color-brand-600);
+      color: #fff;
+    }
+  }
+}
+
+.dot-label {
+  display: block;
+  max-width: 12rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Tablet */
 @media (max-width: 1100px) {
   .embla__slide {
@@ -40,5 +144,23 @@
 
   .embla__slide {
     flex: 0 0 85%;
+  }
+
+  .controls {
+    gap: 0.5rem;
+  }
+
+  .nav-button {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .dot {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .dot-label {
+    max-width: 9rem;
   }
 }

@@ -40,12 +40,13 @@ const Contact = () => {
       errors.email = 'Please enter a valid email address.';
     }
 
-    // Phone number validation using a basic regex
+    // Phone is optional; only validate format when provided
     const phoneRegex =
       /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
-    if (!formData.phoneNumber.trim()) {
-      errors.phoneNumber = 'Phone number is required.';
-    } else if (!phoneRegex.test(formData.phoneNumber)) {
+    if (
+      formData.phoneNumber.trim() &&
+      !phoneRegex.test(formData.phoneNumber)
+    ) {
       errors.phoneNumber = 'Please enter a valid phone number.';
     }
 
@@ -192,7 +193,8 @@ const Contact = () => {
               {/* Phone Number */}
               <div className={styles.formGroup}>
                 <label htmlFor="phoneNumber" className={styles.label}>
-                  Phone Number
+                  Phone Number{' '}
+                  <span className={styles.optional}>(optional)</span>
                 </label>
                 <input
                   type="text"

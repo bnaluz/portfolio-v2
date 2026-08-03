@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import AutoScroll from 'embla-carousel-auto-scroll'; // Import this
+import AutoScroll from 'embla-carousel-auto-scroll';
 import { Project } from '../../data/projects';
 import CarouselCard from '../Carousel/CarouselCard';
 import styles from './Carousel.module.scss';
@@ -12,22 +12,73 @@ type CarouselProps = {
 };
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
-  const [emblaRef] = useEmblaCarousel(
+  const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
       align: 'start',
     },
     [
       AutoScroll({
-        speed: 1, // Higher number = faster
+        speed: 1,
         stopOnInteraction: false,
-        stopOnMouseEnter: true, // This handles your hover requirement
+        stopOnMouseEnter: true,
       }),
     ],
   );
 
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const pauseAutoScroll = useCallback(() => {
+    emblaApi?.plugins()?.autoScroll?.stop();
+  }, [emblaApi]);
+
+  const resumeAutoScroll = useCallback(() => {
+    const autoScroll = emblaApi?.plugins()?.autoScroll;
+    if (autoScroll && !autoScroll.isPlaying()) {
+      autoScroll.play();
+    }
+  }, [emblaApi]);
+
+  const scrollPrev = useCallback(() => {
+    pauseAutoScroll();
+    emblaApi?.scrollPrev();
+  }, [emblaApi, pauseAutoScroll]);
+
+  const scrollNext = useCallback(() => {
+    pauseAutoScroll();
+    emblaApi?.scrollNext();
+  }, [emblaApi, pauseAutoScroll]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      pauseAutoScroll();
+      emblaApi?.scrollTo(index);
+    },
+    [emblaApi, pauseAutoScroll],
+  );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
+  }, [emblaApi]);
+
   return (
-    <div className={styles['carousel-wrapper']}>
+    <div
+      className={styles['carousel-wrapper']}
+      onMouseLeave={resumeAutoScroll}
+    >
       <div className={styles['embla']}>
         <div className={styles['embla__viewport']} ref={emblaRef}>
           <div className={styles['embla__container']}>
@@ -38,6 +89,48 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className={styles['controls']}>
+        <button
+          type="button"
+          className={styles['nav-button']}
+          onClick={scrollPrev}
+          aria-label="Previous project"
+        >
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div
+          className={styles['dots']}
+          role="tablist"
+          aria-label="Jump to project"
+        >
+          {projects.map((project, index) => (
+            <button
+              key={project.slug}
+              type="button"
+              role="tab"
+              aria-selected={index === selectedIndex}
+              aria-label={`Go to ${project.title}`}
+              className={`${styles['dot']} ${
+                index === selectedIndex ? styles['dot--active'] : ''
+              }`}
+              onClick={() => scrollTo(index)}
+            >
+              <span className={styles['dot-label']}>{project.title}</span>
+            </button>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className={styles['nav-button']}
+          onClick={scrollNext}
+          aria-label="Next project"
+        >
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </div>
   );
