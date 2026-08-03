@@ -28,10 +28,6 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const pauseAutoScroll = useCallback(() => {
-    emblaApi?.plugins()?.autoScroll?.stop();
-  }, [emblaApi]);
-
   const resumeAutoScroll = useCallback(() => {
     const autoScroll = emblaApi?.plugins()?.autoScroll;
     if (autoScroll && !autoScroll.isPlaying()) {
@@ -40,21 +36,25 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
   }, [emblaApi]);
 
   const scrollPrev = useCallback(() => {
-    pauseAutoScroll();
-    emblaApi?.scrollPrev();
-  }, [emblaApi, pauseAutoScroll]);
+    if (!emblaApi) return;
+    emblaApi.plugins()?.autoScroll?.stop();
+    emblaApi.scrollPrev();
+  }, [emblaApi]);
 
   const scrollNext = useCallback(() => {
-    pauseAutoScroll();
-    emblaApi?.scrollNext();
-  }, [emblaApi, pauseAutoScroll]);
+    if (!emblaApi) return;
+    emblaApi.plugins()?.autoScroll?.stop();
+    emblaApi.scrollNext();
+  }, [emblaApi]);
 
   const scrollTo = useCallback(
     (index: number) => {
-      pauseAutoScroll();
-      emblaApi?.scrollTo(index);
+      if (!emblaApi) return;
+      emblaApi.plugins()?.autoScroll?.stop();
+      setSelectedIndex(index);
+      emblaApi.scrollTo(index);
     },
-    [emblaApi, pauseAutoScroll],
+    [emblaApi],
   );
 
   useEffect(() => {
